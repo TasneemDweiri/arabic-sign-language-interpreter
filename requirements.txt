@@ -1,5 +1,4 @@
 streamlit
-opencv-python
 mediapipe
 numpy
 scikit-learn
@@ -9,3 +8,4 @@ arabic-reshaper
 python-bidi
 huggingface_hub
 Pillow
+opencv-python-headless
