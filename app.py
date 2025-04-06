@@ -5,15 +5,11 @@ import joblib
 import mediapipe as mp
 import arabic_reshaper
 from bidi.algorithm import get_display
-from huggingface_hub import hf_hub_download
 from PIL import ImageFont, ImageDraw, Image
 
-model_path = hf_hub_download(repo_id="TasneemDweiri/arabic-sign-language-interpreter", filename="model.pkl")
-label_encoder_path = hf_hub_download(repo_id="TasneemDweiri/arabic-sign-language-interpreter", filename="label_encoder.pkl")
-
 # Load model and label encoder
-model = joblib.load(model_path)
-label_encoder = joblib.load(label_encoder_path)
+model = joblib.load("model.pkl")
+label_encoder = joblib.load("label_encoder.pkl")
 
 # Arabic letters mapping
 EnAr = {
@@ -55,14 +51,10 @@ FRAME_WINDOW = st.image([])
 
 cap = cv2.VideoCapture(0)
 
-if run:
-    cap = cv2.VideoCapture(0)
-    while cap.isOpened():
-        ret, frame = cap.read()
-        if not ret or frame is None:
-            st.error("⚠️ Failed to read from webcam.")
-            break
-
+while run:
+    ret, frame = cap.read()
+    if not ret:
+        break
 
     img_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     results = hands.process(img_rgb)
