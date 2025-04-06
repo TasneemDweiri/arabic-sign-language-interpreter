@@ -1,0 +1,11 @@
+streamlit
+opencv-python
+mediapipe
+numpy
+scikit-learn
+pandas
+joblib
+arabic-reshaper
+python-bidi
+huggingface_hub
+Pillow
