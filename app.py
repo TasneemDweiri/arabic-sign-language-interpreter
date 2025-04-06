@@ -59,9 +59,10 @@ if run:
     cap = cv2.VideoCapture(0)
     while cap.isOpened():
         ret, frame = cap.read()
-        if not ret:
+        if not ret or frame is None:
             st.error("⚠️ Failed to read from webcam.")
             break
+
 
     img_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     results = hands.process(img_rgb)
