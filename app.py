@@ -12,8 +12,8 @@ model_path = hf_hub_download(repo_id="TasneemDweiri/arabic-sign-language-interpr
 label_encoder_path = hf_hub_download(repo_id="TasneemDweiri/arabic-sign-language-interpreter", filename="label_encoder.pkl")
 
 # Load model and label encoder
-model = joblib.load("model_path")
-label_encoder = joblib.load("label_encoder_path")
+model = joblib.load(model_path)
+label_encoder = joblib.load(label_encoder_path)
 
 # Arabic letters mapping
 EnAr = {
